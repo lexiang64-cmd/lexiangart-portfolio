@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="时装视觉设计摄影">
+  <rect width="900" height="900" fill="#171513"/>
+  <path d="M116 104h668v690H116z" fill="#f6f1e8"/>
+  <path d="M430 142c86 70 118 184 96 342l122 244H250l124-244c-28-158-12-272 56-342z" fill="#126b63"/>
+  <path d="M392 164c-56 130-44 286 36 468" fill="none" stroke="#c78b2d" stroke-width="34"/>
+  <circle cx="450" cy="154" r="62" fill="#b93d30"/>
+  <path d="M220 220h126M560 220h126M190 706h520" stroke="#171513" stroke-width="20"/>
+</svg>

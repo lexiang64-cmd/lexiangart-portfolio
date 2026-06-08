@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作品集 | 设计 绘画 摄影</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark">J</span>
+        <span>你的名字</span>
+      </a>
+      <nav class="main-nav" aria-label="主要导航">
+        <a href="#works">作品</a>
+        <a href="#about">关于</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="作品集介绍">
+        <div class="hero-copy">
+          <p class="eyebrow">Design / Painting / Photography</p>
+          <h1>用视觉讲述质感、情绪与清晰的想法。</h1>
+          <p class="hero-lede">
+            这里收录你的设计、绘画与摄影作品，为展览、合作、社交传播和商业推广预留了完整入口。
+          </p>
+          <div class="hero-actions" aria-label="快捷操作">
+            <a class="button primary" href="#works">查看作品</a>
+            <a class="button secondary" href="mailto:hello@example.com">预约合作</a>
+          </div>
+        </div>
+        <div class="hero-gallery" aria-label="精选作品预览">
+          <figure class="hero-tile tile-large">
+            <img
+              src="assets/hero-architecture.svg"
+              alt="几何建筑光影摄影"
+            />
+          </figure>
+          <figure class="hero-tile">
+            <img
+              src="assets/hero-gallery.svg"
+              alt="画廊中的绘画作品"
+            />
+          </figure>
+          <figure class="hero-tile">
+            <img
+              src="assets/hero-fashion.svg"
+              alt="时装视觉设计摄影"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="works">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Works</p>
+          <h2>作品</h2>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="作品分类">
+          <button class="filter active" type="button" data-filter="all" role="tab" aria-selected="true">全部</button>
+          <button class="filter" type="button" data-filter="design" role="tab" aria-selected="false">设计</button>
+          <button class="filter" type="button" data-filter="painting" role="tab" aria-selected="false">绘画</button>
+          <button class="filter" type="button" data-filter="photo" role="tab" aria-selected="false">摄影</button>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card" data-category="design">
+            <img
+              src="assets/work-brand.svg"
+              alt="品牌视觉系统设计"
+            />
+            <div class="work-info">
+              <span>设计</span>
+              <h3>品牌视觉系统</h3>
+              <p>视觉识别、版式、社交媒体延展</p>
+            </div>
+          </article>
+
+          <article class="work-card" data-category="painting">
+            <img
+              src="assets/work-paint-red.svg"
+              alt="抽象绘画局部"
+            />
+            <div class="work-info">
+              <span>绘画</span>
+              <h3>午后色块</h3>
+              <p>丙烯、纸本、情绪研究</p>
+            </div>
+          </article>
+
+          <article class="work-card" data-category="photo">
+            <img
+              src="assets/work-photo-night.svg"
+              alt="夜晚现场摄影"
+            />
+            <div class="work-info">
+              <span>摄影</span>
+              <h3>城市夜场</h3>
+              <p>现场纪实、光线、人物氛围</p>
+            </div>
+          </article>
+
+          <article class="work-card" data-category="design">
+            <img
+              src="assets/work-poster.svg"
+              alt="数字视觉海报"
+            />
+            <div class="work-info">
+              <span>设计</span>
+              <h3>活动主视觉</h3>
+              <p>海报、传播图、动态视觉方向</p>
+            </div>
+          </article>
+
+          <article class="work-card" data-category="painting">
+            <img
+              src="assets/work-studio.svg"
+              alt="绘画工作室中的画作"
+            />
+            <div class="work-info">
+              <span>绘画</span>
+              <h3>工作室片段</h3>
+              <p>综合材料、空间、手工痕迹</p>
+            </div>
+          </article>
+
+          <article class="work-card" data-category="photo">
+            <img
+              src="assets/work-landscape.svg"
+              alt="自然风景摄影"
+            />
+            <div class="work-info">
+              <span>摄影</span>
+              <h3>自然光手记</h3>
+              <p>风景、色温、旅行记录</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-section" id="about">
+        <div class="about-copy">
+          <p class="eyebrow">About</p>
+          <h2>把创作变成可被看见、记住和传播的视觉资产。</h2>
+          <p>
+            你可以在这里放个人经历、展览记录、客户合作、媒介偏好与创作理念。文字保持简洁，让作品成为主角。
+          </p>
+        </div>
+        <dl class="stats">
+          <div>
+            <dt>24</dt>
+            <dd>精选作品</dd>
+          </div>
+          <div>
+            <dt>3</dt>
+            <dd>创作方向</dd>
+          </div>
+          <div>
+            <dt>2026</dt>
+            <dd>持续更新</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>展览、委托、品牌合作与媒体邀约</h2>
+        </div>
+        <div class="contact-actions">
+          <a class="button primary" href="mailto:hello@example.com">hello@example.com</a>
+          <a class="button secondary" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="button secondary" href="https://www.behance.net/" target="_blank" rel="noreferrer">Behance</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 你的名字</span>
+      <a href="#top">回到顶部</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

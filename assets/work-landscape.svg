@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-label="自然风景摄影">
+  <rect width="900" height="650" fill="#93bfd0"/>
+  <circle cx="704" cy="140" r="78" fill="#c78b2d"/>
+  <path d="M0 430 190 220l128 130 132-168 204 248z" fill="#126b63"/>
+  <path d="M246 430 438 250l146 118 120-92 196 154z" fill="#171513" opacity=".82"/>
+  <path d="M0 478c140-34 254-34 342 0s176 34 264 0 186-34 294 0v172H0z" fill="#f6f1e8"/>
+  <path d="M0 548c162-38 302-34 420 12s278 42 480-12" fill="none" stroke="#b93d30" stroke-width="22" opacity=".75"/>
+</svg>

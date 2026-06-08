@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-label="抽象绘画局部">
+  <rect width="900" height="650" fill="#e9ddce"/>
+  <path d="M-40 424C120 218 272 590 430 310c126-222 282-102 510-242v642H-40z" fill="#b93d30"/>
+  <path d="M80 70c140 72 246 62 320-28 84 176 238 232 462 168" fill="none" stroke="#126b63" stroke-width="58" opacity=".86"/>
+  <circle cx="650" cy="432" r="118" fill="#c78b2d" opacity=".92"/>
+  <path d="M120 560h680" stroke="#171513" stroke-width="22" opacity=".55"/>
+</svg>

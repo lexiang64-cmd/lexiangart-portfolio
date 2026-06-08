@@ -1,0 +1,16 @@
+{
+  "name": "creative-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A static portfolio website for design, painting, and photography works.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.js",
+    "build": "node scripts/build.js",
+    "check": "node scripts/validate.js",
+    "preview": "node scripts/dev-server.js dist 4173"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="几何建筑光影摄影">
+  <rect width="900" height="1200" fill="#d6c6b6"/>
+  <path d="M0 0h260l250 1200H0z" fill="#1b3f5f"/>
+  <path d="M900 0H640L390 1200h510z" fill="#93bfd0"/>
+  <path d="M360 0h180l-50 1200H410z" fill="#fff3de"/>
+  <path d="M118 0l238 1200M210 0l230 1200M690 0L462 1200M782 0L550 1200" stroke="#f6f1e8" stroke-width="32" opacity=".72"/>
+  <ellipse cx="450" cy="270" rx="140" ry="260" fill="#f6f1e8" opacity=".82"/>
+</svg>

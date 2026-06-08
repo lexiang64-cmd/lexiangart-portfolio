@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-label="数字视觉海报">
+  <rect width="900" height="650" fill="#126b63"/>
+  <rect x="108" y="70" width="684" height="510" fill="#171513"/>
+  <path d="M182 490 376 144l144 190 86-112 118 268z" fill="#f6f1e8"/>
+  <circle cx="580" cy="224" r="78" fill="#b93d30"/>
+  <path d="M162 128h166M162 180h106M162 528h576" stroke="#c78b2d" stroke-width="24"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="画廊中的绘画作品">
+  <rect width="900" height="900" fill="#ede4d5"/>
+  <rect x="110" y="100" width="680" height="580" fill="#fffaf2" stroke="#2a2723" stroke-width="18"/>
+  <path d="M170 620C260 360 394 490 452 300c74 200 224 78 292 320z" fill="#b93d30"/>
+  <path d="M160 206h590" stroke="#126b63" stroke-width="42"/>
+  <circle cx="622" cy="430" r="86" fill="#c78b2d"/>
+  <rect x="70" y="720" width="760" height="70" fill="#2a2723"/>
+</svg>

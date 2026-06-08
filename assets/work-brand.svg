@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-label="品牌视觉系统设计">
+  <rect width="900" height="650" fill="#fffaf2"/>
+  <rect x="80" y="70" width="310" height="210" fill="#126b63"/>
+  <rect x="430" y="70" width="390" height="78" fill="#171513"/>
+  <rect x="430" y="182" width="250" height="28" fill="#b93d30"/>
+  <rect x="430" y="238" width="330" height="28" fill="#c78b2d"/>
+  <circle cx="235" cy="455" r="110" fill="#b93d30"/>
+  <rect x="430" y="360" width="390" height="170" fill="#d6c6b6"/>
+  <path d="M480 446h290" stroke="#126b63" stroke-width="34"/>
+</svg>
