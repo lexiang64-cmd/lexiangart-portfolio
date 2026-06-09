@@ -60,10 +60,16 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
   font-weight: 700;
 }
 
+.brand span:last-child {
+  line-height: 1.15;
+}
+
 .brand-mark {
+  flex: 0 0 auto;
   display: grid;
   width: 34px;
   height: 34px;
@@ -372,6 +378,10 @@ h3 {
   .main-nav {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .brand span:last-child {
+    max-width: 230px;
   }
 
   h1 {
