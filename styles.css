@@ -275,6 +275,27 @@ h3 {
   font-size: 0.88rem;
 }
 
+.mission-section {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.45fr) minmax(0, 0.75fr);
+  gap: clamp(28px, 6vw, 78px);
+  padding: 84px clamp(18px, 5%, 68px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.mission-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.mission-copy p {
+  max-width: 74ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
 .section {
   padding: 84px clamp(18px, 5%, 68px);
 }
@@ -572,6 +593,7 @@ h3 {
 @media (max-width: 920px) {
   .hero,
   .meet-section,
+  .mission-section,
   .feature-section,
   .feature-section-alt,
   .about-section,
