@@ -8,6 +8,8 @@ const requiredFiles = [
   "artwork.html",
   "birdwatching.html",
   "classes.html",
+  "conservation.html",
+  "recognition.html",
   "about.html",
   "contact.html",
   "blog.html",
@@ -24,6 +26,8 @@ const htmlPages = [
   "artwork.html",
   "birdwatching.html",
   "classes.html",
+  "conservation.html",
+  "recognition.html",
   "about.html",
   "contact.html",
   "blog.html"
@@ -128,7 +132,16 @@ assert(
   "sitemap.xml must include the homepage"
 );
 
-for (const pathName of ["/artwork", "/birdwatching", "/classes", "/about", "/contact", "/blog"]) {
+for (const pathName of [
+  "/artwork",
+  "/birdwatching",
+  "/classes",
+  "/conservation",
+  "/recognition",
+  "/about",
+  "/contact",
+  "/blog"
+]) {
   assert(
     sitemapXml.includes(`<loc>https://www.lexiangart.com${pathName}</loc>`),
     `sitemap.xml must include ${pathName}`

@@ -9,6 +9,8 @@ const requiredEntries = [
   "artwork.html",
   "birdwatching.html",
   "classes.html",
+  "conservation.html",
+  "recognition.html",
   "about.html",
   "contact.html",
   "blog.html",
