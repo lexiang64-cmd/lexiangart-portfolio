@@ -24,6 +24,10 @@ filters.forEach((filter) => {
 });
 
 function openLightbox(image) {
+  if (!lightbox || !lightboxImage || !lightboxCaption) {
+    return;
+  }
+
   lightboxImage.src = image.currentSrc || image.src;
   lightboxImage.alt = image.alt;
   lightboxCaption.textContent = image.alt;
@@ -33,6 +37,10 @@ function openLightbox(image) {
 }
 
 function closeLightbox() {
+  if (!lightbox || !lightboxImage || !lightboxCaption) {
+    return;
+  }
+
   lightbox.classList.remove("is-open");
   lightbox.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
@@ -45,10 +53,10 @@ previewImages.forEach((image) => {
   image.addEventListener("click", () => openLightbox(image));
 });
 
-lightboxClose.addEventListener("click", closeLightbox);
-lightboxImage.addEventListener("click", closeLightbox);
+lightboxClose?.addEventListener("click", closeLightbox);
+lightboxImage?.addEventListener("click", closeLightbox);
 
-lightbox.addEventListener("click", (event) => {
+lightbox?.addEventListener("click", (event) => {
   if (event.target === lightbox) {
     closeLightbox();
   }
