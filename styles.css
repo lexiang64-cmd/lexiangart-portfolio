@@ -73,6 +73,13 @@ a {
   line-height: 1.15;
 }
 
+.brand-logo {
+  flex: 0 0 auto;
+  width: auto;
+  height: clamp(40px, 4vw, 50px);
+  object-fit: contain;
+}
+
 .brand-mark {
   flex: 0 0 auto;
   display: grid;
@@ -205,6 +212,67 @@ h3 {
 
 .tile-large {
   grid-row: span 2;
+}
+
+.meet-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.48fr) minmax(0, 0.72fr);
+  gap: clamp(28px, 6vw, 78px);
+  align-items: center;
+  padding: 84px clamp(18px, 5%, 68px);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.meet-photo {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #d7c6b3;
+  box-shadow: var(--shadow);
+}
+
+.meet-photo img {
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+  object-fit: contain;
+  background: #eadfce;
+}
+
+.meet-copy p:not(.eyebrow):not(.meet-subheading) {
+  max-width: 68ch;
+  color: var(--muted);
+}
+
+.meet-subheading {
+  margin: 14px 0 24px;
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.meet-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 28px 0;
+}
+
+.meet-stats div {
+  padding: 16px 0 0;
+  border-top: 3px solid var(--ink);
+}
+
+.meet-stats dt {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  line-height: 1;
+}
+
+.meet-stats dd {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
 .section {
@@ -503,6 +571,7 @@ h3 {
 
 @media (max-width: 920px) {
   .hero,
+  .meet-section,
   .feature-section,
   .feature-section-alt,
   .about-section,
@@ -571,8 +640,13 @@ h3 {
 
   .work-grid,
   .info-grid,
+  .meet-stats,
   .stats {
     grid-template-columns: 1fr;
+  }
+
+  .brand-logo {
+    height: 40px;
   }
 
   .work-card {
