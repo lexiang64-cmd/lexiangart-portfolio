@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
-const requiredEntries = ["index.html", "styles.css", "script.js", "assets"];
+const requiredEntries = ["index.html", "styles.css", "script.js", "assets", "robots.txt", "sitemap.xml"];
 
 async function assertExists(entry) {
   try {
