@@ -11,10 +11,16 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from PIL import Image, UnidentifiedImageError
+try:
+    from PIL import Image, UnidentifiedImageError
+except Exception:
+    Image = None
+
+    class UnidentifiedImageError(Exception):
+        pass
 
 
-PROJECT_DIR = Path(__file__).resolve().parents[1]
+PROJECT_DIR = Path(os.environ.get("WECHAT_QR_PROJECT_DIR", Path(__file__).resolve().parents[1])).resolve()
 DROP_DIR = Path(os.environ.get("WECHAT_QR_DROP_DIR", "/Users/mac/Documents/Codex/WechatGroupQR")).resolve()
 ARCHIVE_DIR = DROP_DIR / "archive"
 LOG_DIR = DROP_DIR / "logs"
@@ -120,19 +126,44 @@ def newest_image() -> Path | None:
     return max(candidates, key=lambda path: path.stat().st_mtime)
 
 
-def validate_image(path: Path) -> Image.Image:
-    try:
-        with Image.open(path) as candidate:
-            candidate.verify()
-        image = Image.open(path)
-        width, height = image.size
-        if width < 120 or height < 120:
-            raise RuntimeError("Image is too small to be a reliable WeChat QR code.")
-        if width / height > 3 or height / width > 3:
-            raise RuntimeError("Image aspect ratio looks unusual for a QR code.")
-        return image
-    except UnidentifiedImageError as error:
-        raise RuntimeError("The newest file is not a valid JPG/PNG image.") from error
+def validate_image(path: Path):
+    if Image is not None:
+        try:
+            with Image.open(path) as candidate:
+                candidate.verify()
+            image = Image.open(path)
+            width, height = image.size
+            if width < 120 or height < 120:
+                raise RuntimeError("Image is too small to be a reliable WeChat QR code.")
+            if width / height > 3 or height / width > 3:
+                raise RuntimeError("Image aspect ratio looks unusual for a QR code.")
+            return {"kind": "pil", "image": image, "width": width, "height": height}
+        except UnidentifiedImageError as error:
+            raise RuntimeError("The newest file is not a valid JPG/PNG image.") from error
+
+    if path.suffix.lower() not in IMAGE_SUFFIXES:
+        raise RuntimeError("The newest file is not a JPG/PNG image.")
+
+    probe = subprocess.run(
+        ["/usr/bin/sips", "-g", "pixelWidth", "-g", "pixelHeight", str(path)],
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if probe.returncode != 0:
+        raise RuntimeError("The newest file is not a valid JPG/PNG image.")
+
+    width_match = next((line for line in probe.stdout.splitlines() if "pixelWidth:" in line), "")
+    height_match = next((line for line in probe.stdout.splitlines() if "pixelHeight:" in line), "")
+    width = int(width_match.rsplit(":", 1)[1].strip())
+    height = int(height_match.rsplit(":", 1)[1].strip())
+
+    if width < 120 or height < 120:
+        raise RuntimeError("Image is too small to be a reliable WeChat QR code.")
+    if width / height > 3 or height / width > 3:
+        raise RuntimeError("Image aspect ratio looks unusual for a QR code.")
+    return {"kind": "sips", "width": width, "height": height}
 
 
 def backup_current_qr(now_token: str) -> None:
@@ -147,13 +178,25 @@ def backup_current_qr(now_token: str) -> None:
     log(f"Backed up current QR to {backup_path}")
 
 
-def replace_qr(source: Path, image: Image.Image) -> None:
+def replace_qr(source: Path, image_info) -> None:
     if source.suffix.lower() == ".png":
         shutil.copy2(source, QR_PATH)
         return
 
-    converted = image.convert("RGB")
-    converted.save(QR_PATH, format="PNG", optimize=False, compress_level=0)
+    if image_info["kind"] == "pil":
+        converted = image_info["image"].convert("RGB")
+        converted.save(QR_PATH, format="PNG", optimize=False, compress_level=0)
+        return
+
+    converted = subprocess.run(
+        ["/usr/bin/sips", "-s", "format", "png", str(source), "--out", str(QR_PATH)],
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if converted.returncode != 0:
+        raise RuntimeError("Could not convert QR image to PNG.")
 
 
 def write_meta(source_name: str, now: datetime) -> None:
@@ -216,8 +259,8 @@ def main() -> int:
           log("No new QR image found.")
           return 0
 
-      image = validate_image(image_path)
-      log(f"Found newest QR image: {image_path.name} ({image.size[0]}x{image.size[1]})")
+      image_info = validate_image(image_path)
+      log(f"Found newest QR image: {image_path.name} ({image_info['width']}x{image_info['height']})")
 
       if args.dry_run:
           log("Dry run complete. No files changed.")
@@ -229,7 +272,7 @@ def main() -> int:
       now = datetime.now(TIMEZONE)
       now_token = now.strftime("%Y%m%d-%H%M%S")
       backup_current_qr(now_token)
-      replace_qr(image_path, image)
+      replace_qr(image_path, image_info)
       write_meta(image_path.name, now)
       archive_path = archive_source(image_path, now_token)
       log(f"Archived original QR to {archive_path}")
