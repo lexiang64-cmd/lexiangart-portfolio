@@ -705,6 +705,12 @@ h3 {
   fill: currentColor;
 }
 
+.quail-divider img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
 .wechat-card h1 {
   max-width: none;
   margin: 0 auto;
@@ -888,6 +894,11 @@ h3 {
   }
 
   .quail-divider svg {
+    width: 46px;
+    height: 46px;
+  }
+
+  .quail-divider img {
     width: 46px;
     height: 46px;
   }
