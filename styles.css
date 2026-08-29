@@ -657,6 +657,92 @@ h3 {
   background: rgba(255, 250, 242, 0.22);
 }
 
+.wechat-page {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.78), rgba(246, 241, 232, 0.98)),
+    var(--paper);
+}
+
+.compact-nav {
+  gap: 18px;
+}
+
+.wechat-hero {
+  display: grid;
+  min-height: calc(100vh - 150px);
+  place-items: center;
+  padding: clamp(34px, 7vw, 88px) clamp(18px, 5%, 68px);
+}
+
+.wechat-card {
+  width: min(100%, 760px);
+  padding: clamp(24px, 5vw, 52px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.wechat-card h1 {
+  max-width: 13ch;
+  margin: 0 auto;
+  font-size: clamp(2.35rem, 5vw, 4.65rem);
+}
+
+.wechat-subtitle {
+  margin: 18px 0 0;
+  color: var(--teal);
+  font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+  font-weight: 800;
+}
+
+.wechat-intro {
+  max-width: 42rem;
+  margin: 18px auto 30px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.wechat-qr-panel {
+  display: grid;
+  width: min(100%, 360px);
+  margin: 0 auto;
+  padding: 14px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.wechat-qr-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.wechat-scan-note {
+  margin: 24px 0 8px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.wechat-updated {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.wechat-expiry-note {
+  max-width: 36rem;
+  margin: 18px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 @media (max-width: 920px) {
   .hero,
   .meet-section,
@@ -758,5 +844,28 @@ h3 {
   .lightbox-close {
     top: 10px;
     right: 10px;
+  }
+
+  .compact-nav {
+    justify-content: flex-start;
+  }
+
+  .wechat-card {
+    text-align: left;
+  }
+
+  .wechat-card h1 {
+    max-width: none;
+    margin: 0;
+  }
+
+  .wechat-qr-panel {
+    width: min(100%, 320px);
+  }
+
+  .wechat-scan-note,
+  .wechat-updated,
+  .wechat-expiry-note {
+    text-align: center;
   }
 }

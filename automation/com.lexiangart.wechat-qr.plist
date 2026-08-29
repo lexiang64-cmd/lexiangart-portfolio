@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.lexiangart.wechat-qr</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/bash</string>
+      <string>/Users/mac/Documents/Codex/2026-05-20/new-chat/update_wechat_qr.sh</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/mac/Documents/Codex/2026-05-20/new-chat</string>
+    <key>StartInterval</key>
+    <integer>300</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/mac/Documents/Codex/WechatGroupQR/logs/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/mac/Documents/Codex/WechatGroupQR/logs/launchd.err.log</string>
+  </dict>
+</plist>

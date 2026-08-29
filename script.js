@@ -63,7 +63,29 @@ lightbox?.addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+  if (event.key === "Escape" && lightbox?.classList.contains("is-open")) {
     closeLightbox();
   }
 });
+
+const wechatUpdated = document.querySelector("[data-wechat-updated]");
+
+if (wechatUpdated) {
+  fetch("assets/wechat-qr-meta.json", { cache: "no-store" })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("QR metadata is unavailable");
+      }
+      return response.json();
+    })
+    .then((metadata) => {
+      const value = metadata.lastUpdated || "Not updated yet";
+      wechatUpdated.textContent = value;
+      if (metadata.lastUpdatedISO) {
+        wechatUpdated.setAttribute("datetime", metadata.lastUpdatedISO);
+      }
+    })
+    .catch(() => {
+      wechatUpdated.textContent = "Not updated yet";
+    });
+}

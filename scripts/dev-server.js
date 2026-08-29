@@ -46,8 +46,21 @@ const server = http.createServer(async (request, response) => {
   }
 
   try {
-    const fileStat = await stat(filePath);
-    const finalPath = fileStat.isDirectory() ? path.join(filePath, "index.html") : filePath;
+    let finalPath = filePath;
+    let fileStat;
+
+    try {
+      fileStat = await stat(finalPath);
+    } catch (error) {
+      if (!path.extname(finalPath)) {
+        finalPath = `${finalPath}.html`;
+        fileStat = await stat(finalPath);
+      } else {
+        throw error;
+      }
+    }
+
+    finalPath = fileStat.isDirectory() ? path.join(finalPath, "index.html") : finalPath;
     const extension = path.extname(finalPath).toLowerCase();
 
     response.writeHead(200, {

@@ -11,6 +11,7 @@ const requiredEntries = [
   "classes.html",
   "conservation.html",
   "recognition.html",
+  "wechat.html",
   "about.html",
   "contact.html",
   "blog.html",
