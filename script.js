@@ -70,6 +70,29 @@ document.addEventListener("keydown", (event) => {
 
 const wechatUpdated = document.querySelector("[data-wechat-updated]");
 
+function formatWechatTime(metadata) {
+  if (metadata.lastUpdatedDisplay) {
+    return metadata.lastUpdatedDisplay;
+  }
+
+  if (metadata.lastUpdatedISO) {
+    const date = new Date(metadata.lastUpdatedISO);
+    if (!Number.isNaN(date.valueOf())) {
+      return new Intl.DateTimeFormat("zh-CN", {
+        timeZone: "America/Los_Angeles",
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).format(date);
+    }
+  }
+
+  return metadata.lastUpdated || wechatUpdated?.textContent || "尚未更新";
+}
+
 if (wechatUpdated) {
   fetch("assets/wechat-qr-meta.json", { cache: "no-store" })
     .then((response) => {
@@ -79,13 +102,14 @@ if (wechatUpdated) {
       return response.json();
     })
     .then((metadata) => {
-      const value = metadata.lastUpdated || "Not updated yet";
-      wechatUpdated.textContent = value;
+      wechatUpdated.textContent = formatWechatTime(metadata);
       if (metadata.lastUpdatedISO) {
         wechatUpdated.setAttribute("datetime", metadata.lastUpdatedISO);
       }
     })
     .catch(() => {
-      wechatUpdated.textContent = "Not updated yet";
+      if (!wechatUpdated.textContent.trim()) {
+        wechatUpdated.textContent = "尚未更新";
+      }
     });
 }

@@ -44,6 +44,10 @@ def log(message: str) -> None:
 
 
 def run_git(args: list[str], check: bool = True) -> subprocess.CompletedProcess[str]:
+    env = os.environ.copy()
+    env["GIT_TERMINAL_PROMPT"] = "0"
+    env["GCM_INTERACTIVE"] = "Never"
+
     return subprocess.run(
         [GIT_BIN, *args],
         cwd=PROJECT_DIR,
@@ -51,6 +55,7 @@ def run_git(args: list[str], check: bool = True) -> subprocess.CompletedProcess[
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        env=env,
     )
 
 
@@ -153,10 +158,12 @@ def replace_qr(source: Path, image: Image.Image) -> None:
 
 def write_meta(source_name: str, now: datetime) -> None:
     display_time = now.strftime("%Y-%m-%d %H:%M:%S %Z")
+    display_time_cn = f"{now.year}年{now.month}月{now.day}日 {now.hour:02d}:{now.minute:02d}"
     META_PATH.write_text(
         json.dumps(
             {
                 "lastUpdated": display_time,
+                "lastUpdatedDisplay": display_time_cn,
                 "lastUpdatedISO": now.isoformat(),
                 "sourceFile": source_name,
             },
