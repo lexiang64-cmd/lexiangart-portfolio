@@ -92,6 +92,19 @@ def current_git_state() -> tuple[str, str]:
     return branch, upstream
 
 
+def sync_with_upstream() -> None:
+    ensure_clean_except_allowed()
+    run_git(["fetch", "origin"])
+    upstream = run_git(["rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"]).stdout.strip()
+    if not upstream:
+        raise RuntimeError("Git upstream is not configured. Please set the GitHub upstream first.")
+    rebase_result = run_git(["rebase", upstream], check=False)
+    if rebase_result.returncode != 0:
+        raise RuntimeError(
+            "Could not sync the automation Git copy before updating QR:\n"
+            + rebase_result.stderr.strip()
+        )
+
 def ensure_clean_except_allowed() -> None:
     status = run_git(["status", "--porcelain", "--untracked-files=all"]).stdout.splitlines()
     unsafe = []
@@ -238,6 +251,12 @@ def git_commit_and_push(now: datetime) -> str | None:
     commit_hash = run_git(["rev-parse", "--short", "HEAD"]).stdout.strip()
     push_result = run_git(["push"], check=False)
     if push_result.returncode != 0:
+        log("Initial push failed; syncing with upstream and retrying once.")
+        rebase_result = run_git(["pull", "--rebase"], check=False)
+        if rebase_result.returncode == 0:
+            push_result = run_git(["push"], check=False)
+
+    if push_result.returncode != 0:
         raise RuntimeError(
             "Git commit succeeded but push failed. Local files are kept.\n"
             + push_result.stderr.strip()
@@ -267,6 +286,7 @@ def main() -> int:
           return 0
 
       if not args.no_git:
+          sync_with_upstream()
           ensure_clean_except_allowed()
 
       now = datetime.now(TIMEZONE)
