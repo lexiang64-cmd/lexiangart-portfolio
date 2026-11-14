@@ -100,6 +100,11 @@ function validatePage(rootDir, page) {
   assert(html.includes('property="og:description"'), `${rootDir}/${page} must include an Open Graph description`);
   assert(html.includes('property="og:url"'), `${rootDir}/${page} must include an Open Graph URL`);
   assert(html.includes('property="og:image"'), `${rootDir}/${page} must include an Open Graph image`);
+  assert(
+    html.split("G-PZF723HJCJ").length - 1 === 2 &&
+      html.includes("https://www.googletagmanager.com/gtag/js?id=G-PZF723HJCJ"),
+    `${rootDir}/${page} must load exactly one Google tag for G-PZF723HJCJ`
+  );
 }
 
 function validateRoot(rootDir) {
