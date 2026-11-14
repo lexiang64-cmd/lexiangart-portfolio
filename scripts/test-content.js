@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { renderContent } from './content.js';
+import sharp from 'sharp';
 const root = await mkdtemp(path.join(tmpdir(),'leo-content-'));
 await mkdir(path.join(root,'content'));
 const dist = path.join(root,'dist');
@@ -26,5 +27,17 @@ try {
   await assert.rejects(render({events:[event,event]}),/duplicate/);
   await assert.rejects(render({art:[{...event,image:'assets/test.jpg',alt:'Test',links:[{url:'https://example.com/shop'}]}]}),/unsupported shop URL/);
   await assert.rejects(render({art:[{...event,image:'incoming/../private.jpg',alt:'Test'}]}),/Unsafe image/);
+  await mkdir(path.join(root,'incoming'));
+  await sharp({create:{width:20,height:30,channels:3,background:'red'}}).png().toFile(path.join(root,'incoming/a.png'));
+  await sharp({create:{width:30,height:20,channels:3,background:'blue'}}).png().toFile(path.join(root,'incoming/b.png'));
+  const gallery = await render({photography:[
+    {id:'test-a',title:'Test A',published:true,image:'incoming/a.png',alt:'Test A',themes:['Wetlands']},
+    {id:'test-b',title:'Test B',published:true,image:'incoming/b.png',alt:'Test B',themes:['Coastal']}
+  ]});
+  assert(gallery.photography.includes('<option value="Wetlands">'));
+  assert(gallery.photography.includes('<option value="Coastal">'));
+  const fullImages = [...gallery.photography.matchAll(/data-full="([^"]+)"/g)].map(x=>x[1]);
+  assert.equal(new Set(fullImages).size,2,'Concurrent images must have distinct filenames');
+  for (const file of fullImages) { const image = await sharp(path.join(dist,file)).metadata(); assert(!image.exif); assert(image.width<=30); }
   console.log('Content behavior checks passed: drafts, empty values, date sorting, escaping, latest links, species confirmation, shop and image paths.');
 } finally { await rm(root,{recursive:true,force:true}); }

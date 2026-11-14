@@ -43,7 +43,8 @@ export async function renderContent(root, dist) {
       imageCache.set(source,{base:`assets/optimized/${filename}`,small:widths[0],large:widths[1]});
     }
     const {base,small,large} = imageCache.get(source);
-    return `<img src="${base}-480.webp" srcset="${base}-480.webp ${small.width}w, ${base}-1600.webp ${large.width}w" sizes="(max-width: 650px) 100vw, 33vw" width="${small.width}" height="${small.height}" loading="lazy" decoding="async" alt="${escape(alt)}" data-full="${base}-1600.webp" tabindex="0" role="button" aria-label="Enlarge: ${escape(alt)}" />`;
+    const srcset = small.width === large.width ? `${base}-480.webp ${small.width}w` : `${base}-480.webp ${small.width}w, ${base}-1600.webp ${large.width}w`;
+    return `<img src="${base}-480.webp" srcset="${srcset}" sizes="(max-width: 650px) 100vw, 33vw" width="${small.width}" height="${small.height}" loading="lazy" decoding="async" alt="${escape(alt)}" data-full="${base}-1600.webp" tabindex="0" role="button" aria-label="Enlarge: ${escape(alt)}" />`;
   }
   const metadata = (label,value) => value !== '' && value != null ? `<p><strong>${label}:</strong> ${escape(value)}</p>` : '';
   async function card(item, type) {
