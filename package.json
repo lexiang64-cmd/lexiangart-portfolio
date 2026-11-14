@@ -8,7 +8,9 @@
     "dev": "node scripts/dev-server.js dist",
     "build": "node scripts/build.js",
     "check": "node scripts/validate.js && node scripts/test-content.js",
-    "preview": "node scripts/dev-server.js dist 4173"
+    "preview": "node scripts/dev-server.js dist 4173",
+    "prepare-content": "node scripts/prepare-content.js",
+    "prebuild": "node scripts/prepare-content.js"
   },
   "engines": {
     "node": "24.x"

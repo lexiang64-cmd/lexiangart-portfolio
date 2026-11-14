@@ -40,3 +40,5 @@ The site entry point is `index.html`, and image assets are referenced from `asse
 ## 内容维护
 
 请阅读 [中文网站更新指南](docs/网站更新指南.md) 和 [CMS 评估](docs/CMS评估.md)。所有内容来自 `content/*.json`，构建时生成静态 HTML；修改数据后重新构建。`content/templates/` 包含三个可复制的草稿模板。
+
+New originals in `incoming/` are local-only. `npm run build` first prepares portable web images in `assets/uploads/` and rewrites content references. Commit those files together. A clean Vercel checkout builds entirely from tracked files; never force-add incoming originals.

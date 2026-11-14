@@ -1,8 +1,9 @@
-import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, rm, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { renderContent } from './content.js';
+import { prepareContent } from './prepare-content.js';
 import sharp from 'sharp';
 const root = await mkdtemp(path.join(tmpdir(),'leo-content-'));
 await mkdir(path.join(root,'content'));
@@ -39,5 +40,21 @@ try {
   const fullImages = [...gallery.photography.matchAll(/data-full="([^"]+)"/g)].map(x=>x[1]);
   assert.equal(new Set(fullImages).size,2,'Concurrent images must have distinct filenames');
   for (const file of fullImages) { const image = await sharp(path.join(dist,file)).metadata(); assert(!image.exif); assert(image.width<=30); }
+  assert.equal(await prepareContent(root),2);
+  const prepared = JSON.parse(await readFile(path.join(root,'content/photography.json'),'utf8'));
+  assert(prepared.every(x=>x.image.startsWith('assets/uploads/')));
+  for (const record of prepared) {
+    const metadata = await sharp(path.join(root,record.image)).metadata();
+    assert(!metadata.exif);
+    assert(metadata.width<=1600 && metadata.height<=1600);
+  }
+  // Reproduce Vercel's input: content and prepared assets, with no local originals.
+  await rm(path.join(root,'incoming'),{recursive:true});
+  assert.equal(await prepareContent(root),0);
+  const remote = await renderContent(root,dist);
+  assert(remote.photography.includes('Test A'));
+  assert(remote.photography.includes('Test B'));
+  assert(!remote.photography.includes('incoming/'));
+  console.log('Portable image workflow passed: original-free remote build and repeat preparation.');
   console.log('Content behavior checks passed: drafts, empty values, date sorting, escaping, latest links, species confirmation, shop and image paths.');
 } finally { await rm(root,{recursive:true,force:true}); }
