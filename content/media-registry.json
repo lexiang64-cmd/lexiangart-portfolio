@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "images": [
+    {
+      "originalSha256": "8a6aeaa215fa4731b29f26b3fe88e907436490c1a2db2e885d3d4d8e90256a95",
+      "webSha256": "628a32770384fa495171ff224caa4559ac2ac023fabbce5d1702911bc4e1a11f",
+      "asset": "assets/photo-protagonist.jpg",
+      "assetSha256": "8a6aeaa215fa4731b29f26b3fe88e907436490c1a2db2e885d3d4d8e90256a95",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "photography",
+          "id": "photo-protagonist",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    },
+    {
+      "originalSha256": "3047ea8634d9ebad3a1331c72f806b9a8e4071bc88355ed85dd7a0651752a212",
+      "webSha256": "09828c71b45a56fdd84c8c63e668976b4308347bbad900f46c198c5c6a3aa0e7",
+      "asset": "assets/photo-la-jolla-yoga.jpg",
+      "assetSha256": "3047ea8634d9ebad3a1331c72f806b9a8e4071bc88355ed85dd7a0651752a212",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "photography",
+          "id": "photo-la-jolla-yoga",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    },
+    {
+      "originalSha256": "431cc8711e57525fc2c93339dfb410f80fbd8fab0b25db3b3c54bcbeaf714845",
+      "webSha256": "cfa4a3ba300f548012ec427564d457d8a01310120a57e89b3f5fb35568d28785",
+      "asset": "assets/photo-got-it.jpg",
+      "assetSha256": "431cc8711e57525fc2c93339dfb410f80fbd8fab0b25db3b3c54bcbeaf714845",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "photography",
+          "id": "photo-got-it",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    },
+    {
+      "originalSha256": "635be21f20e2c1aa6a8fd0e688d5ff0f07884f182f7275612c856e8e893e2963",
+      "webSha256": "f20366ee8c3027fe0bbe732f387d2649b64fa9d0fd1ec771d2cb785d1aad8dc3",
+      "asset": "assets/design-reed-parrotbill.jpg",
+      "assetSha256": "635be21f20e2c1aa6a8fd0e688d5ff0f07884f182f7275612c856e8e893e2963",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "art",
+          "id": "design-reed-parrotbill",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    },
+    {
+      "originalSha256": "6952ac21f8fadb944d5b37f4c3fcfe2b3b2e591f8a4adf5f7f5664c9940c6d01",
+      "webSha256": "64d23f8371516e310d6470c2ca7164ed66c1a844ed942491e313130c4cc3bc5b",
+      "asset": "assets/design-magpie.jpg",
+      "assetSha256": "6952ac21f8fadb944d5b37f4c3fcfe2b3b2e591f8a4adf5f7f5664c9940c6d01",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "art",
+          "id": "design-magpie",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    },
+    {
+      "originalSha256": "2e06b72baa378c688968dc6223df8db10fc93219442ad615e84c5eb25c4328cb",
+      "webSha256": "10017cd58c68e72e55a3d82659efbf7217ef1efbbc009836236c81ec0c9082d7",
+      "asset": "assets/design-white-headed-crane.jpg",
+      "assetSha256": "2e06b72baa378c688968dc6223df8db10fc93219442ad615e84c5eb25c4328cb",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "art",
+          "id": "design-white-headed-crane",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    },
+    {
+      "originalSha256": "c12afd986752998dfb0b17b9a3129d4b15055caf8f54bc35e851b3c628c2069f",
+      "webSha256": "2a8763ec82c575472ae125155389510a02ea1bfc1d2984f586204af6777d1641",
+      "asset": "assets/painting-gannets.jpg",
+      "assetSha256": "c12afd986752998dfb0b17b9a3129d4b15055caf8f54bc35e851b3c628c2069f",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "art",
+          "id": "painting-gannets",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    },
+    {
+      "originalSha256": "8c55cb2a0aeaf83a23d3375335f6bda89c55c1cc43c600bffb50826763845ff3",
+      "webSha256": "d41701e62d7a1238a71db3f52f4ce54f14970cdbfec8e28a29d29d13c41ab34e",
+      "asset": "assets/painting-reed-parrotbill.JPG",
+      "assetSha256": "8c55cb2a0aeaf83a23d3375335f6bda89c55c1cc43c600bffb50826763845ff3",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "art",
+          "id": "painting-reed-parrotbill",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    },
+    {
+      "originalSha256": "29aacbb7c8778c418fc76a5f5f82572622b6040aed9f6dd79cef8ce474e5c62b",
+      "webSha256": "89e6ee417b43364f027678ddb441ce12b4cdddd38cea6d2710339c73ce1c7e69",
+      "asset": "assets/painting-golden-pool.jpg",
+      "assetSha256": "29aacbb7c8778c418fc76a5f5f82572622b6040aed9f6dd79cef8ce474e5c62b",
+      "sources": [],
+      "usages": [
+        {
+          "collection": "art",
+          "id": "painting-golden-pool",
+          "slot": "image"
+        }
+      ],
+      "legacy": true
+    }
+  ]
+}
