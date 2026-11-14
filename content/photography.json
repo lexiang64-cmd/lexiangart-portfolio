@@ -1,0 +1,50 @@
+[
+  {
+    "id": "photo-protagonist",
+    "title": "I Am the Protagonist",
+    "image": "assets/photo-protagonist.jpg",
+    "alt": "I am the protagonist photography",
+    "description": "A photographic moment centered on presence and character.",
+    "category": "photo",
+    "updatedAt": "",
+    "published": true,
+    "englishName": "",
+    "scientificName": "",
+    "speciesConfirmed": false,
+    "date": "",
+    "location": "",
+    "themes": []
+  },
+  {
+    "id": "photo-la-jolla-yoga",
+    "title": "Yoga by the Sea in La Jolla",
+    "image": "assets/photo-la-jolla-yoga.jpg",
+    "alt": "Yoga by the sea in La Jolla photography",
+    "description": "A coastal image about balance, place, and natural light.",
+    "category": "photo",
+    "updatedAt": "",
+    "published": true,
+    "englishName": "",
+    "scientificName": "",
+    "speciesConfirmed": false,
+    "date": "",
+    "location": "",
+    "themes": []
+  },
+  {
+    "id": "photo-got-it",
+    "title": "Got It.",
+    "image": "assets/photo-got-it.jpg",
+    "alt": "Got it photography",
+    "description": "A captured instant with directness, timing, and attention.",
+    "category": "photo",
+    "updatedAt": "",
+    "published": true,
+    "englishName": "",
+    "scientificName": "",
+    "speciesConfirmed": false,
+    "date": "",
+    "location": "",
+    "themes": []
+  }
+]

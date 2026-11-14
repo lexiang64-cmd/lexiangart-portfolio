@@ -1,0 +1,16 @@
+{
+  "id": "photo-slug",
+  "title": "",
+  "image": "incoming/photography/filename.jpg",
+  "alt": "",
+  "englishName": "",
+  "scientificName": "",
+  "speciesConfirmed": false,
+  "date": "",
+  "location": "",
+  "description": "",
+  "category": "photo",
+  "themes": [],
+  "updatedAt": "",
+  "published": false
+}

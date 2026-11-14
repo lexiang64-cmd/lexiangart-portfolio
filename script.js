@@ -28,10 +28,12 @@ function openLightbox(image) {
     return;
   }
 
-  lightboxImage.src = image.currentSrc || image.src;
+  lightboxImage.src = image.dataset.full || image.currentSrc || image.src;
   lightboxImage.alt = image.alt;
   lightboxCaption.textContent = image.alt;
+  lightbox._previousFocus = document.activeElement;
   lightbox.classList.add("is-open");
+  lightboxClose?.focus();
   lightbox.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
@@ -44,6 +46,7 @@ function closeLightbox() {
   lightbox.classList.remove("is-open");
   lightbox.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  lightbox._previousFocus?.focus();
   lightboxImage.src = "";
   lightboxImage.alt = "";
   lightboxCaption.textContent = "";
@@ -51,6 +54,10 @@ function closeLightbox() {
 
 previewImages.forEach((image) => {
   image.addEventListener("click", () => openLightbox(image));
+  image.tabIndex = 0;
+  image.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLightbox(image); }
+  });
 });
 
 lightboxClose?.addEventListener("click", closeLightbox);
@@ -113,3 +120,19 @@ if (wechatUpdated) {
       }
     });
 }
+
+const photoFilter = document.querySelector('#photo-filter');
+photoFilter?.addEventListener('change', () => {
+  let count = 0;
+  document.querySelectorAll('[data-photo-tags]').forEach(card => {
+    const show = !photoFilter.value || JSON.parse(card.dataset.photoTags).includes(photoFilter.value);
+    card.hidden = !show;
+    if (show) count++;
+  });
+  document.querySelector('#photo-empty').hidden = count > 0;
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Tab' && lightbox?.classList.contains('is-open')) {
+    event.preventDefault(); lightboxClose?.focus();
+  }
+});

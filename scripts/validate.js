@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requiredFiles = [
   "index.html",
+  "photography.html",
   "artwork.html",
   "birdwatching.html",
   "classes.html",
@@ -24,6 +25,7 @@ const requiredFiles = [
 
 const htmlPages = [
   "index.html",
+  "photography.html",
   "artwork.html",
   "birdwatching.html",
   "classes.html",
@@ -94,6 +96,8 @@ function validatePage(rootDir, page) {
 
   assert(html.includes('href="styles.css"'), `${rootDir}/${page} must load styles.css`);
   assert(html.includes('src="script.js"'), `${rootDir}/${page} must load script.js`);
+  assert(!html.includes("<!-- CONTENT:" ) || rootDir === ".", `${page}: unrendered content slot`);
+  assert(html.includes('rel="canonical"'), `${page}: canonical required`);
   assert(html.includes("<title>"), `${rootDir}/${page} must include a title`);
   assert(html.includes('name="description"'), `${rootDir}/${page} must include a meta description`);
   assert(html.includes('property="og:title"'), `${rootDir}/${page} must include an Open Graph title`);
@@ -121,7 +125,7 @@ const packageJson = readJson("package.json");
 const vercelJson = readJson("vercel.json");
 
 assert(packageJson.scripts?.build === "node scripts/build.js", "package.json build script is incorrect");
-assert(packageJson.scripts?.dev === "node scripts/dev-server.js", "package.json dev script is incorrect");
+assert(packageJson.scripts?.dev === "node scripts/dev-server.js dist", "package.json dev script is incorrect");
 assert(vercelJson.buildCommand === "npm run build", "vercel.json buildCommand is incorrect");
 assert(vercelJson.outputDirectory === "dist", "vercel.json outputDirectory must be dist");
 
@@ -159,3 +163,18 @@ validateRoot(".");
 validateRoot("dist");
 
 console.log("Validation complete: package, Vercel config, homepage, and asset paths are OK.");
+
+const photoData = readJson('content/photography.json').filter(x=>x.published);
+const artData = readJson('content/art.json').filter(x=>x.published);
+const eventData = readJson('content/events.json').filter(x=>x.published);
+for (const [page,items] of [['photography.html',photoData],['artwork.html',[...artData,...photoData]],['birdwatching.html',eventData]]) {
+  const html = readFileSync(path.join(root,'dist',page),'utf8');
+  for (const item of items) assert(html.includes(`id="${item.id}"`), `${page}: missing ${item.id}`);
+  for (const match of html.matchAll(/(?:data-full|srcset)="([^"]+)"/g)) {
+    for (const variant of match[1].split(',')) {
+      const file = variant.trim().split(' ')[0];
+      assert(existsSync(path.join(root,'dist',file)), `Missing image variant: ${file}`);
+    }
+  }
+}
+console.log('Content records and responsive image variants verified.');

@@ -5,12 +5,15 @@
   "description": "A static portfolio website for design, painting, and photography works.",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/dev-server.js",
+    "dev": "node scripts/dev-server.js dist",
     "build": "node scripts/build.js",
-    "check": "node scripts/validate.js",
+    "check": "node scripts/validate.js && node scripts/test-content.js",
     "preview": "node scripts/dev-server.js dist 4173"
   },
   "engines": {
-    "node": ">=18"
+    "node": "24.x"
+  },
+  "dependencies": {
+    "sharp": "0.35.5"
   }
 }

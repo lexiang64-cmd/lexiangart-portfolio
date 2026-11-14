@@ -1,0 +1,68 @@
+[
+  {
+    "id": "design-reed-parrotbill",
+    "title": "Chinese Style Animal Pattern Design: Reed Parrotbill",
+    "image": "assets/design-reed-parrotbill.jpg",
+    "alt": "Chinese style animal pattern design Reed Parrotbill",
+    "description": "Wildlife pattern design inspired by Chinese visual traditions.",
+    "category": "design",
+    "updatedAt": "",
+    "published": true,
+    "links": []
+  },
+  {
+    "id": "design-magpie",
+    "title": "Chinese Style Animal Pattern Design: Magpie",
+    "image": "assets/design-magpie.jpg",
+    "alt": "Chinese style animal pattern design Magpie",
+    "description": "Decorative animal pattern design for art products and visual applications.",
+    "category": "design",
+    "updatedAt": "",
+    "published": true,
+    "links": []
+  },
+  {
+    "id": "design-white-headed-crane",
+    "title": "Chinese Style Animal Pattern Design: White-headed Crane",
+    "image": "assets/design-white-headed-crane.jpg",
+    "alt": "Chinese style animal pattern design White-headed Crane",
+    "description": "Pattern design focused on endangered birds and habitat awareness.",
+    "category": "design",
+    "updatedAt": "",
+    "published": true,
+    "links": []
+  },
+  {
+    "id": "painting-gannets",
+    "title": "Gannets Arrow Down Like a Rainstorm",
+    "image": "assets/painting-gannets.jpg",
+    "alt": "Gannets arrow down like a rainstorm painting",
+    "description": "A wildlife painting about movement, energy, and survival.",
+    "category": "painting",
+    "updatedAt": "",
+    "published": true,
+    "links": []
+  },
+  {
+    "id": "painting-reed-parrotbill",
+    "title": "Reed Parrotbill",
+    "image": "assets/painting-reed-parrotbill.JPG",
+    "alt": "Reed parrotbill painting",
+    "description": "A painting dedicated to wetland birds and their fragile habitats.",
+    "category": "painting",
+    "updatedAt": "",
+    "published": true,
+    "links": []
+  },
+  {
+    "id": "painting-golden-pool",
+    "title": "Golden Pool",
+    "image": "assets/painting-golden-pool.jpg",
+    "alt": "Golden pool painting",
+    "description": "A quiet ecological scene shaped by light, water, and wildlife.",
+    "category": "painting",
+    "updatedAt": "",
+    "published": true,
+    "links": []
+  }
+]
